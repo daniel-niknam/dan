@@ -7,9 +7,9 @@ RSpec.describe Dan do
 
   it "renders a simple text" do
     template = Dan.new <<~EOF
-      This is my text
+      My Simple Text
     EOF
-    expect(template.result(binding)).to eq("This is my text\n")
+    expect(template.result(binding)).to eq("My Simple Text\n")
   end
 
   it "renders a simple object in the given template" do

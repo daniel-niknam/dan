@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require "temple"
+
 require_relative "dan/version"
+require_relative "dan/parser"
+require_relative "dan/engine"
 
 class Dan
   class Error < StandardError; end
@@ -10,13 +14,10 @@ class Dan
 
   def initialize(string)
     @string = string
-    @output = ""
   end
 
   def result(b)
-    @output = @string.gsub(RUBY_EXPRESION_REGEX) do |_m|
-      b.eval($~[:exp])
-    end
+    @output = b.eval(Dan::Engine.new.call(@string))
 
     @output
   end

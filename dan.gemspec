@@ -29,4 +29,7 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "temple", "~> 0.10"
+  spec.add_dependency "tilt", "~> 2.0"
 end
