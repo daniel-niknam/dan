@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 require "temple"
+require "oga"
 
 require_relative "dan/version"
 require_relative "dan/parser"
+require_relative "dan/compiler"
 require_relative "dan/engine"
+require_relative "dan/component"
 
 class Dan
   class Error < StandardError; end

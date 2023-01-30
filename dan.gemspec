@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "temple", "~> 0.10"
   spec.add_dependency "tilt", "~> 2.0"
+  spec.add_dependency "oga", "~> 3.4"
 end
