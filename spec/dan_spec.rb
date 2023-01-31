@@ -84,4 +84,12 @@ RSpec.describe Dan do
     expect(parsed_html.at_xpath("/div/strong/text()").text).to eq("My Content")
     expect(parsed_html.at_xpath("/div/text()").text).to eq("My Inner Content")
   end
+
+  it "renders multiple component with inner content in the given HTML template" do
+    template = Dan.new(%(<ComponentWithInnerContent>First inner<ComponentWithInnerContent>Second inner</ComponentWithInnerContent></ComponentWithInnerContent>))
+
+    parsed_html = Oga.parse_html(template.result(binding))
+    expect(parsed_html.at_xpath("/div/strong/text()").text).to eq("My Content")
+    expect(parsed_html.at_xpath("/div/text()").text).to eq("First inner")
+  end
 end

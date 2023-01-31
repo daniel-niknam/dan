@@ -2,6 +2,7 @@
 
 require "temple"
 require "oga"
+require "securerandom"
 
 require_relative "dan/version"
 require_relative "dan/parser"
