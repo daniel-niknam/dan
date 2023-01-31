@@ -1,11 +1,10 @@
-class Dan::Engine < Temple::Engine
+class Dan::ComponentEngine < Temple::Engine
   use Dan::Parser
 
   filter :StringSplitter
   filter :StaticAnalyzer
 
   use Dan::Compiler
-  use Temple::HTML::Fast
 
   filter :ControlFlow
 
@@ -13,6 +12,4 @@ class Dan::Engine < Temple::Engine
   filter :MultiFlattener
   filter :StaticMerger
   filter :DynamicInliner
-
-  generator :ArrayBuffer
 end

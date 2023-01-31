@@ -17,8 +17,6 @@ class Dan::Parser < Temple::Parser
   private
 
   def parse_document(document, result = [:multi])
-    # puts document.inspect
-
     if document.is_a? Oga::XML::Element
       node_result = [:multi]
       attributes = {}
@@ -34,7 +32,13 @@ class Dan::Parser < Temple::Parser
         [:html, :tag, document.name, [:multi], node_result]
       end
     elsif document.is_a? Oga::XML::Text
-      result << Temple::ERB::Parser.new.call(document.text)
+      erb = Temple::ERB::Parser.new.call(document.text)
+      # Temple::ERB parser will return a S-Expression like
+      # [:multi, [:static, "..."]] We are removing
+      # the :multi part since we don't need it and add
+      # the rest of S-Expressions to our result
+      erb.delete_at(0)
+      erb.each { |sexp| result << sexp }
     else
       puts document.inspect
     end
