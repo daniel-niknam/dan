@@ -12,6 +12,35 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install dan-engine
 
+## How it works
+
+Converts
+
+```ruby
+# my_component.rb
+class MyComponent
+  def initilise(name:, **)
+    ...
+  end
+
+  def call
+    <<~HTML
+      <main>Hello World! <%= name %></main>
+    HTML
+  end
+end
+```
+```html
+<div>
+  <MyComponent name="dan" />
+</div>
+```
+To
+```html
+<div>
+  <main>Hello World! dan</main>
+</div>
+```
 ## Usage
 
 TODO: Write usage instructions here
