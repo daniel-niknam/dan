@@ -91,5 +91,7 @@ RSpec.describe Dan do
     parsed_html = Oga.parse_html(template.result(binding))
     expect(parsed_html.at_xpath("/div/strong/text()").text).to eq("My Content")
     expect(parsed_html.at_xpath("/div/text()").text).to eq("First inner")
+    expect(parsed_html.at_xpath("/div/div/strong/text()").text).to eq("My Content")
+    expect(parsed_html.at_xpath("/div/div/text()").text).to eq("Second inner")
   end
 end
